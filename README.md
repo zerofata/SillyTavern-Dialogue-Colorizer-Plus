@@ -9,20 +9,24 @@ This is a fork of [XanadusWorks/SillyTavern-Dialogue-Colorizer](https://github.c
 
 
 ```css
+/* Avatar Icon */
 .mesAvatarWrapper .avatar {
     margin-bottom: 8px;
     outline-offset: 3px;
 }
-/* Avatar Icon */
 div.mes .mesAvatarWrapper .avatar, div.mes .mesIDDisplay:not(:empty), div.mes .mes_timer:not(:empty), div.mes .tokenCounterDisplay:not(:empty) {
     outline: 1px solid var(--character-color);
     box-shadow: 0px 0px 2px 1px rgb(from var(--character-color) r g b / 80%);
 }
+
 /* MessageID, Timer & Token Displays */
 div.mes .mesIDDisplay:not(:empty), div.mes .mes_timer:not(:empty), div.mes .tokenCounterDisplay:not(:empty) {
     outline: 1px solid var(--character-color);
     outline-offset: -1px;
     box-shadow: 0px 0px 1px 1px rgb(from var(--character-color) r g b / 20%);
+    background-color: rgba(20, 20, 20, 0.7);
+    border-radius: 3px;
+    margin-bottom: 3px;
 }
 ```
 
