@@ -83,24 +83,25 @@ let personasStyleSheet;
  */
 async function getCharStyleString(stChar) {
     let styleHtml = "";
+
     styleHtml += `
-        :root {
-            --character-color-${stChar.uid}: #${(await getCharacterDialogueColor(stChar))?.toHex() || 'inherit'};
+        .mes[xdc-author_uid="${stChar.uid}"] {
+            --character-color: #${(await getCharacterDialogueColor(stChar))?.toHex() || 'inherit'};
         }
     `;
 
     if ((extSettings.colorizeTargets & ColorizeTargetType.QUOTED_TEXT) === ColorizeTargetType.QUOTED_TEXT) {
         styleHtml += `
             .mes[xdc-author_uid="${stChar.uid}"] .mes_text q {
-                color: var(--character-color-${stChar.uid});
+                color: var(--character-color);
             }
         `;
     }
     if ((extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) === ColorizeTargetType.BUBBLES) {
         styleHtml += `
             .bubblechat .mes[xdc-author_uid="${stChar.uid}"] {
-                background-color: var(--character-color-${stChar.uid}) !important;
-                border-color: var(--character-color-${stChar.uid}) !important;
+                background-color: var(--character-color) !important;
+                border-color: var(--character-color) !important;
             }
         `;
     }
