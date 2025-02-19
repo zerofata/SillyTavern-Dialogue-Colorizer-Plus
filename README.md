@@ -5,7 +5,8 @@ This is a fork of [XanadusWorks/SillyTavern-Dialogue-Colorizer](https://github.c
 ## Improvements
 - Assigns character colours to --character-color so that it can be used in custom css. Scoped to the .mes element to support group chats.
 
-![image](https://github.com/user-attachments/assets/eee4b4ee-dac0-4119-adc5-7927b188ce20)
+![image](https://github.com/user-attachments/assets/0dbfd4a9-929a-4393-b436-cf3dc0d1d6cd)
+
 
 ```css
 .mesAvatarWrapper .avatar {
