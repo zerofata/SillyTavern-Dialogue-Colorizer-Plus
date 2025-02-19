@@ -1,4 +1,4 @@
-# SillyTavern Dialogue Colorizer
+# SillyTavern Dialogue Colorizer-Plus
 
 This is a fork of [XanadusWorks/SillyTavern-Dialogue-Colorizer](https://github.com/XanadusWorks/SillyTavern-Dialogue-Colorizer) with minor improvements.
 
