@@ -3,7 +3,7 @@
 This is a fork of [XanadusWorks/SillyTavern-Dialogue-Colorizer](https://github.com/XanadusWorks/SillyTavern-Dialogue-Colorizer) with minor improvements.
 
 ## Improvements
-- Assigns character colours to --character-color so that it can be used in custom css. Scoped to the .mes element to support group chats.
+- Assigns character colours to a CSS variable '--character-color' so that it can be used in custom css. Scoped to the .mes element to support group chats.
 
 ![image](https://github.com/user-attachments/assets/0dbfd4a9-929a-4393-b436-cf3dc0d1d6cd)
 
