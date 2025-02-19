@@ -83,27 +83,30 @@ let personasStyleSheet;
  */
 async function getCharStyleString(stChar) {
     let styleHtml = "";
+    const dialogueColor = await getCharacterDialogueColor(stChar);
 
-    styleHtml += `
-        .mes[xdc-author_uid="${stChar.uid}"] {
-            --character-color: #${(await getCharacterDialogueColor(stChar))?.toHex() || 'inherit'};
+    if (dialogueColor) {
+        styleHtml += `
+            .mes[xdc-author_uid="${stChar.uid}"] {
+                --character-color: #${dialogueColor.toHex()};
+            }
+        `;
+
+        if (extSettings.colorizeTargets & ColorizeTargetType.QUOTED_TEXT) {
+            styleHtml += `
+                .mes[xdc-author_uid="${stChar.uid}"] .mes_text q {
+                    color: var(--character-color);
+                }
+            `;
         }
-    `;
-
-    if ((extSettings.colorizeTargets & ColorizeTargetType.QUOTED_TEXT) === ColorizeTargetType.QUOTED_TEXT) {
-        styleHtml += `
-            .mes[xdc-author_uid="${stChar.uid}"] .mes_text q {
-                color: var(--character-color);
-            }
-        `;
-    }
-    if ((extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) === ColorizeTargetType.BUBBLES) {
-        styleHtml += `
-            .bubblechat .mes[xdc-author_uid="${stChar.uid}"] {
-                background-color: var(--character-color) !important;
-                border-color: var(--character-color) !important;
-            }
-        `;
+        if (extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) {
+            styleHtml += `
+                .bubblechat .mes[xdc-author_uid="${stChar.uid}"] {
+                    background-color: var(--character-color) !important;
+                    border-color: var(--character-color) !important;
+                }
+            `;
+        }
     }
 
     return styleHtml;
