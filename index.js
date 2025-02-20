@@ -69,7 +69,7 @@ const defaultExtSettings = {
     chatBubbleLightness: 0.15,
 };
 
-const extName = "SillyTavern-Dialogue-Colorizer";
+const extName = "SillyTavern-Dialogue-Colorizer-Plus";
 const extFolderPath = `scripts/extensions/third-party/${extName}`;
 const extSettings = initializeSettings(extName, defaultExtSettings);
 
