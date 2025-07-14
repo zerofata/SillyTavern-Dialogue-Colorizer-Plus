@@ -92,6 +92,12 @@ async function getCharStyleString(stChar) {
             }
         `;
 
+        styleHtml += `
+            .mes[is_user="true"] {
+                --character-color: #${dialogueColor.toHex()};
+            }
+        `;
+
         if (extSettings.colorizeTargets & ColorizeTargetType.QUOTED_TEXT) {
             styleHtml += `
                 .mes[xdc-author_uid="${stChar.uid}"] .mes_text q {
