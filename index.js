@@ -86,28 +86,32 @@ async function getCharStyleString(stChar) {
     const dialogueColor = await getCharacterDialogueColor(stChar);
 
     if (dialogueColor) {
+        // For character messages
         styleHtml += `
             .mes[xdc-author_uid="${stChar.uid}"] {
                 --character-color: #${dialogueColor.toHex()};
             }
         `;
 
+        // For user messages
         styleHtml += `
             .mes[is_user="true"] {
-                --character-color: #${dialogueColor.toHex()};
+                --character-color: YOUR_DESIRED_USER_COLOR;
             }
         `;
 
         if (extSettings.colorizeTargets & ColorizeTargetType.QUOTED_TEXT) {
             styleHtml += `
-                .mes[xdc-author_uid="${stChar.uid}"] .mes_text q {
+                .mes[xdc-author_uid="${stChar.uid}"] .mes_text q,
+                .mes[is_user="true"] .mes_text q {
                     color: var(--character-color);
                 }
             `;
         }
         if (extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) {
             styleHtml += `
-                .bubblechat .mes[xdc-author_uid="${stChar.uid}"] {
+                .bubblechat .mes[xdc-author_uid="${stChar.uid}"],
+                .bubblechat .mes[is_user="true"] {
                     background-color: var(--character-color) !important;
                     border-color: var(--character-color) !important;
                 }
