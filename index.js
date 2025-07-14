@@ -104,10 +104,21 @@ async function getCharStyleString(stChar) {
                     color: var(--character-color);
                 }
             `;
+            styleHtml += `
+                .mes[is_user="true"] .mes_text q {
+                    color: var(--character-color);
+                }
+            `;
         }
         if (extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) {
             styleHtml += `
                 .bubblechat .mes[xdc-author_uid="${stChar.uid}"] {
+                    background-color: var(--character-color) !important;
+                    border-color: var(--character-color) !important;
+                }
+            `;
+            styleHtml += `
+                .mes[is_user="true"] {
                     background-color: var(--character-color) !important;
                     border-color: var(--character-color) !important;
                 }
