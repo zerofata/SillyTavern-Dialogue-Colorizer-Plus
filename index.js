@@ -115,6 +115,7 @@ async function getCharStyleString(stChar) {
                     `;
             }
         }
+        debugger;
         if (extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) {
             styleHtml += `
                 .bubblechat .mes[xdc-author_uid="${stChar.uid}"] {
