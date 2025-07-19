@@ -92,8 +92,9 @@ async function getCharStyleString(stChar) {
                 --character-color: #${dialogueColor.toHex()};
             }
         `;
-
+        debugger;
         if (currentPersona.#avatarName == stChar.#avatarName) {
+            debugger;
             styleHtml += `
                 .mes[is_user="true"] {
                     --character-color: #${dialogueColor.toHex()};
