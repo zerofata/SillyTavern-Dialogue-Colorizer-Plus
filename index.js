@@ -109,6 +109,7 @@ async function getCharStyleString(stChar) {
                     color: var(--character-color);
                 }
             `;
+            debugger;
         }
         if (extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) {
             styleHtml += `
