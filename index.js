@@ -84,7 +84,6 @@ let personasStyleSheet;
 async function getCharStyleString(stChar) {
     let styleHtml = "";
     const dialogueColor = await getCharacterDialogueColor(stChar);
-    let currentPersona = getCurrentPersona()
 
     if (dialogueColor) {
         styleHtml += `
@@ -93,29 +92,13 @@ async function getCharStyleString(stChar) {
             }
         `;
 
-        if (currentPersona.avatarName == stChar.avatarName) {
-            styleHtml += `
-                .mes[is_user="true"] {
-                    --character-color: #${dialogueColor.toHex()};
-                }
-            `;
-        }
-
         if (extSettings.colorizeTargets & ColorizeTargetType.QUOTED_TEXT) {
             styleHtml += `
                 .mes[xdc-author_uid="${stChar.uid}"] .mes_text q {
                     color: var(--character-color);
                 }
             `;
-            if (currentPersona.avatarName == stChar.avatarName) {
-                    styleHtml += `
-                        .mes[is_user="true"] .mes_text q {
-                            color: var(--character-color);
-                        }
-                    `;
-            }
         }
-        debugger;
         if (extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) {
             styleHtml += `
                 .bubblechat .mes[xdc-author_uid="${stChar.uid}"] {
@@ -123,14 +106,6 @@ async function getCharStyleString(stChar) {
                     border-color: var(--character-color) !important;
                 }
             `;
-            if (currentPersona.avatarName == stChar.avatarName) {
-                    styleHtml += `
-                        .mes[is_user="true"] {
-                            background-color: var(--character-color) !important;
-                            border-color: var(--character-color) !important;
-                        }
-                    `;
-            }
         }
     }
 
