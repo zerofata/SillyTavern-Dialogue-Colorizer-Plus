@@ -84,6 +84,7 @@ let personasStyleSheet;
 async function getCharStyleString(stChar) {
     let styleHtml = "";
     const dialogueColor = await getCharacterDialogueColor(stChar);
+    let currentPersona = getCurrentPersona()
 
     if (dialogueColor) {
         styleHtml += `
@@ -92,11 +93,13 @@ async function getCharStyleString(stChar) {
             }
         `;
 
-        styleHtml += `
-            .mes[is_user="true"] {
-                --character-color: #${dialogueColor.toHex()};
-            }
-        `;
+        if (currentPersona.#avatarName == stChar.#avatarName) {
+            styleHtml += `
+                .mes[is_user="true"] {
+                    --character-color: #${dialogueColor.toHex()};
+                }
+            `;
+        }
 
         if (extSettings.colorizeTargets & ColorizeTargetType.QUOTED_TEXT) {
             styleHtml += `
@@ -104,12 +107,13 @@ async function getCharStyleString(stChar) {
                     color: var(--character-color);
                 }
             `;
-            styleHtml += `
-                .mes[is_user="true"] .mes_text q {
-                    color: var(--character-color);
-                }
-            `;
-            debugger;
+            if (currentPersona.#avatarName == stChar.#avatarName) {
+                    styleHtml += `
+                        .mes[is_user="true"] .mes_text q {
+                            color: var(--character-color);
+                        }
+                    `;
+            }
         }
         if (extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) {
             styleHtml += `
@@ -118,12 +122,14 @@ async function getCharStyleString(stChar) {
                     border-color: var(--character-color) !important;
                 }
             `;
-            styleHtml += `
-                .mes[is_user="true"] {
-                    background-color: var(--character-color) !important;
-                    border-color: var(--character-color) !important;
-                }
-            `;
+            if (currentPersona.#avatarName == stChar.#avatarName) {
+                    styleHtml += `
+                        .mes[is_user="true"] {
+                            background-color: var(--character-color) !important;
+                            border-color: var(--character-color) !important;
+                        }
+                    `;
+            }
         }
     }
 
