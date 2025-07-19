@@ -93,14 +93,13 @@ async function getCharStyleString(stChar) {
             }
         `;
         debugger;
-        if (currentPersona.#avatarName == stChar.#avatarName) {
-            debugger;
+        //if (currentPersona.#avatarName == stChar.#avatarName) {
             styleHtml += `
                 .mes[is_user="true"] {
                     --character-color: #${dialogueColor.toHex()};
                 }
             `;
-        }
+        //}
 
         if (extSettings.colorizeTargets & ColorizeTargetType.QUOTED_TEXT) {
             styleHtml += `
@@ -108,13 +107,13 @@ async function getCharStyleString(stChar) {
                     color: var(--character-color);
                 }
             `;
-            if (currentPersona.#avatarName == stChar.#avatarName) {
+            //if (currentPersona.#avatarName == stChar.#avatarName) {
                     styleHtml += `
                         .mes[is_user="true"] .mes_text q {
                             color: var(--character-color);
                         }
                     `;
-            }
+            //}
         }
         if (extSettings.colorizeTargets & ColorizeTargetType.BUBBLES) {
             styleHtml += `
@@ -123,14 +122,14 @@ async function getCharStyleString(stChar) {
                     border-color: var(--character-color) !important;
                 }
             `;
-            if (currentPersona.#avatarName == stChar.#avatarName) {
+            //if (currentPersona.#avatarName == stChar.#avatarName) {
                     styleHtml += `
                         .mes[is_user="true"] {
                             background-color: var(--character-color) !important;
                             border-color: var(--character-color) !important;
                         }
                     `;
-            }
+            //}
         }
     }
 
